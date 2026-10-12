@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binileaf Cafe | Demo Website</title>
+<meta name="description" content="A sample café website concept for Binileaf Café. All business details are placeholders.">
+<style>
+:root{
+  --cream:#f8f5ef; --paper:#fffdf9; --brown:#684b3a; --dark:#2f2924;
+  --muted:#776f68; --tan:#e8d9c8; --line:#e9e1d8; --green:#66775d;
+  --shadow:0 18px 55px rgba(56,40,28,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--dark);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.wrap{width:min(1140px,92%);margin:auto}
+.demo-strip{background:#352a23;color:#fff7ed;text-align:center;padding:8px 12px;font-size:12px;letter-spacing:.08em}
+header{position:sticky;top:0;z-index:20;background:rgba(255,253,249,.93);backdrop-filter:blur(14px);border-bottom:1px solid rgba(104,75,58,.12)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:78px;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.02em}
+.brand-mark{width:42px;height:42px;border-radius:50%;background:var(--brown);display:grid;place-items:center;color:#fff7ed;font-size:20px}
+.brand small{display:block;font-size:10px;letter-spacing:.23em;color:var(--muted);font-weight:600;margin-top:-4px}
+nav{display:flex;align-items:center;gap:27px;font-size:13px;font-weight:650;color:#51453c}
+nav a:hover{color:var(--green)}
+.nav-cta,.btn{border:0;border-radius:999px;background:var(--brown);color:white;padding:12px 20px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+.nav-cta:hover,.btn:hover{background:#493326;transform:translateY(-1px)}
+.menu-toggle{display:none;border:1px solid var(--line);background:white;border-radius:12px;padding:9px 12px}
+.hero{padding:72px 0 66px;background:radial-gradient(ellipse at 75% 20%,#f0e4d5 0,transparent 40%),linear-gradient(110deg,#faf6f0,#fffdf9 64%)}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:56px;align-items:center}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--green);font-weight:800;display:flex;align-items:center;gap:9px}
+.eyebrow:before{content:"";width:27px;height:1px;background:var(--green)}
+h1,h2,h3,p{margin-top:0}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(46px,6.2vw,76px);line-height:1.02;letter-spacing:-.045em;font-weight:500;margin:22px 0}
+h1 em{color:var(--brown);font-weight:500}
+.hero-copy{max-width:475px;color:var(--muted);font-size:16px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn.secondary{background:transparent;border:1px solid #cfc0b2;color:var(--brown)}
+.btn.secondary:hover{background:#f2e9df}
+.micro-note{font-size:11px;color:#8b8077;margin-top:18px}
+.hero-art{position:relative;min-height:430px}
+.hero-photo{position:absolute;inset:0 22px 20px 22px;border-radius:180px 180px 20px 20px;overflow:hidden;background:#d7c0a6;box-shadow:var(--shadow)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.floating-card{position:absolute;left:0;bottom:0;background:white;border:1px solid #efe7de;border-radius:17px;padding:16px 19px;box-shadow:var(--shadow);max-width:220px}
+.floating-card b{font-family:Georgia,serif;font-size:18px;display:block}
+.floating-card span{font-size:12px;color:var(--muted)}
+.round-stamp{position:absolute;right:0;top:25px;width:94px;height:94px;border-radius:50%;background:var(--green);color:white;display:grid;place-items:center;text-align:center;font-size:10px;line-height:1.3;letter-spacing:.12em;transform:rotate(10deg);border:5px solid #e5eadf}
+section{padding:83px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:34px}
+.section-head h2,.about h2,.visit h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,4.5vw,49px);line-height:1.1;letter-spacing:-.03em;font-weight:500;margin:10px 0 0}
+.section-head p{max-width:400px;color:var(--muted);font-size:14px;margin:0}
+.menu-section{background:#fff}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filter{border:1px solid var(--line);background:white;color:var(--brown);border-radius:999px;padding:9px 16px;font-size:12px;font-weight:750}
+.filter.active,.filter:hover{background:var(--brown);border-color:var(--brown);color:white}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.menu-card{border:1px solid var(--line);border-radius:17px;overflow:hidden;background:#fffdf9;transition:.2s}
+.menu-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.menu-image{height:175px;overflow:hidden;background:#eee0d1}
+.menu-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.menu-card:hover .menu-image img{transform:scale(1.04)}
+.menu-info{padding:18px}
+.menu-title-row{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.menu-title-row h3{font-family:Georgia,serif;font-size:20px;font-weight:500;margin:0 0 7px}
+.price{font-weight:800;color:var(--brown);white-space:nowrap;font-size:14px}
+.menu-info p{font-size:12px;color:var(--muted);margin:0}
+.tag{display:inline-block;margin-top:12px;border-radius:5px;background:#edf0e9;color:#56644e;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:5px 7px}
+.about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-image{height:420px;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.about-image img{width:100%;height:100%;object-fit:cover}
+.about-copy p{color:var(--muted);font-size:15px;margin:22px 0}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:27px}
+.feature{border-top:1px solid #ded2c5;padding-top:14px}
+.feature b{display:block;font-family:Georgia,serif;font-size:18px;font-weight:500}
+.feature span{font-size:12px;color:var(--muted)}
+.gallery-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;grid-template-rows:190px 190px;gap:14px}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+.gallery-grid img:first-child{grid-row:span 2}
+.visit{background:#efe5d9}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.visit p{color:#716258;max-width:460px}
+.info-list{display:grid;gap:12px;margin-top:25px}
+.info-row{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid #ddcfc0}
+.info-icon{width:36px;height:36px;flex-shrink:0;border-radius:50%;background:#fff9f1;display:grid;place-items:center}
+.info-row b{display:block;font-size:13px}
+.info-row span{display:block;color:#716258;font-size:12px}
+.contact-card{background:var(--paper);padding:28px;border-radius:20px;box-shadow:var(--shadow)}
+.contact-card h3{font-family:Georgia,serif;font-size:26px;font-weight:500;margin-bottom:8px}
+.contact-card p{font-size:13px}
+form{display:grid;gap:12px}
+input,textarea,select{width:100%;padding:13px 14px;border:1px solid #e1d7cc;border-radius:10px;background:#fff;font:inherit;font-size:13px;color:var(--dark)}
+textarea{min-height:95px;resize:vertical}
+.form-note{font-size:11px!important;color:#8b8077!important;margin:10px 0 0}
+footer{background:#302720;color:#f8f1e8;padding:36px 0}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer .brand small{color:#c6b7a8}
+footer p{font-size:11px;color:#c6b7a8;margin:7px 0 0}
+.footer-links{display:flex;gap:18px;font-size:12px;color:#e4d5c6}
+.disclaimer{font-size:11px;text-align:center;color:#c6b7a8;border-top:1px solid #514239;padding-top:17px;margin-top:25px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#302720;color:white;padding:13px 18px;border-radius:12px;box-shadow:var(--shadow);font-size:13px;transition:.25s;z-index:99;max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:800px){
+ nav{display:none;position:absolute;top:78px;left:0;right:0;background:var(--paper);padding:20px 5%;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:15px}
+ nav.open{display:flex}.nav-cta{display:none}.menu-toggle{display:block}
+ .hero{padding:48px 0}.hero-grid,.about-grid,.visit-grid{grid-template-columns:1fr;gap:34px}
+ .hero-art{min-height:390px}.hero-photo{inset:0 20px 18px}
+ .section-head{display:block}.section-head p{margin-top:15px}
+ .menu-grid{grid-template-columns:repeat(2,1fr)}
+ .about-image{height:320px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:170px 170px}.gallery-grid img:first-child{grid-row:span 2}
+ section{padding:62px 0}
+}
+@media(max-width:500px){
+ .menu-grid{grid-template-columns:1fr}.menu-image{height:210px}
+ .hero-art{min-height:330px}.round-stamp{width:78px;height:78px;font-size:8px}
+ .floating-card{max-width:185px;padding:12px 14px}
+ .features{gap:12px}.gallery-grid{gap:9px;grid-template-rows:135px 135px}
+ .section-head h2,.about h2,.visit h2{font-size:36px}
+}
+</style>
+</head>
+<body>
+<div class="demo-strip">WEBSITE CONCEPT • DEMO ONLY • BUSINESS DETAILS ARE PLACEHOLDERS</div>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="Binileaf Café home">
+      <span class="brand-mark">B</span><span>binileaf<small>CAFÉ • DEMO CONCEPT</small></span>
+    </a>
+    <nav id="nav">
+      <a href="#home">Home</a><a href="#menu">Menu</a><a href="#story">Our Story</a><a href="#gallery">Gallery</a><a href="#visit">Find Us</a>
+    </nav>
+    <a class="nav-cta" href="#menu">Explore Menu <span>↗</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">A little pause in your day</div>
+      <h1>Good coffee.<br><em>Gentle moments.</em></h1>
+      <p class="hero-copy">A cozy corner for slow mornings, thoughtful sips and something delicious on the side. Your next favourite café moment starts here.</p>
+      <div class="hero-actions"><a class="btn" href="#menu">Discover the menu <span>→</span></a><a class="btn secondary" href="#story">Our café story</a></div>
+      <p class="micro-note">Sample website concept • Menu, prices and details shown are placeholders.</p>
+    </div>
+    <div class="hero-art">
+      <div class="hero-photo"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1100&q=85" alt="Coffee being prepared in a café"></div>
+      <div class="round-stamp">BREWED<br>WITH CARE<br>✦ DAILY</div>
+      <div class="floating-card"><b>Your little coffee ritual</b><span>Made for good days and slow ones, too.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="wrap">
+    <div class="section-head"><div><div class="eyebrow">Something for every mood</div><h2>Made to be savoured.</h2></div><p>From familiar favourites to little treats, explore this sample menu. Items and prices are illustrative placeholders only.</p></div>
+    <div class="filters" role="group" aria-label="Filter menu items">
+      <button class="filter active" data-filter="all">All favourites</button><button class="filter" data-filter="coffee">Coffee</button><button class="filter" data-filter="coolers">Coolers</button><button class="filter" data-filter="bites">Bites & treats</button>
+    </div>
+    <div class="menu-grid" id="menuGrid">
+      <article class="menu-card" data-category="coffee"><div class="menu-image"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80" alt="Latte in a ceramic cup"></div><div class="menu-info"><div class="menu-title-row"><h3>Classic Latte</h3><span class="price">₹180*</span></div><p>Espresso softened with silky steamed milk.</p><span class="tag">Coffee</span></div></article>
+      <article class="menu-card" data-category="coffee"><div class="menu-image"><img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&q=80" alt="Freshly brewed coffee"></div><div class="menu-info"><div class="menu-title-row"><h3>House Cappuccino</h3><span class="price">₹160*</span></div><p>Rich espresso with a cloud of foam.</p><span class="tag">Coffee</span></div></article>
+      <article class="menu-card" data-category="coolers"><div class="menu-image"><img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=700&q=80" alt="Iced coffee with ice"></div><div class="menu-info"><div class="menu-title-row"><h3>Iced Coffee</h3><span class="price">₹190*</span></div><p>Chilled, refreshing and ready for sunny days.</p><span class="tag">Coolers</span></div></article>
+      <article class="menu-card" data-category="bites"><div class="menu-image"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80" alt="Freshly baked bread and pastry"></div><div class="menu-info"><div class="menu-title-row"><h3>Butter Croissant</h3><span class="price">₹140*</span></div><p>Flaky layers, a golden finish and buttery goodness.</p><span class="tag">Bites & treats</span></div></article>
+      <article class="menu-card" data-category="bites"><div class="menu-image"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80" alt="Fresh pastry on a plate"></div><div class="menu-info"><div class="menu-title-row"><h3>Daily Pastry</h3><span class="price">₹170*</span></div><p>A sweet little treat to brighten your break.</p><span class="tag">Bites & treats</span></div></article>
+      <article class="menu-card" data-category="coolers"><div class="menu-image"><img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=700&q=80" alt="Refreshing fruit drink"></div><div class="menu-info"><div class="menu-title-row"><h3>Seasonal Cooler</h3><span class="price">₹175*</span></div><p>A fruity, refreshing sip for your afternoon.</p><span class="tag">Coolers</span></div></article>
+    </div>
+    <p class="micro-note">*Sample prices only. Replace with the café's approved menu and prices before publishing.</p>
+  </div>
+</section>
+
+<section class="about" id="story">
+  <div class="wrap about-grid">
+    <div class="about-image"><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=85" alt="Warm and inviting café interior"></div>
+    <div class="about-copy"><div class="eyebrow">The feeling behind the cup</div><h2>A space to slow down.</h2><p>Some days call for a quick coffee. Others deserve a longer catch-up, a good book or a little time to yourself. This demo introduces Binileaf Café as a welcoming place for all those moments.</p><p>Replace this paragraph with the café's real story, values and details once approved by the business.</p>
+      <div class="features"><div class="feature"><b>Thoughtful sips</b><span>Sample brand message</span></div><div class="feature"><b>Cosy corners</b><span>Sample brand message</span></div><div class="feature"><b>Fresh little bites</b><span>Sample brand message</span></div><div class="feature"><b>Your kind of pause</b><span>Sample brand message</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head"><div><div class="eyebrow">A peek inside</div><h2>Little things, lovely moments.</h2></div><p>Image placeholders to show how café photography could be presented on the final website.</p></div>
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=85" alt="Bright café seating area">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85" alt="Coffee and coffee beans">
+      <img src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?auto=format&fit=crop&w=700&q=85" alt="Coffee served at a café">
+      <img src="https://images.unsplash.com/photo-1493857671505-72967e2e2760?auto=format&fit=crop&w=700&q=85" alt="Café table and chairs">
+      <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=700&q=85" alt="Welcoming coffee shop interior">
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div><div class="eyebrow">Come by for a cup</div><h2>Your next coffee stop?</h2><p>Use this section for the café's verified address, opening hours and contact details. Everything below is placeholder information and must be replaced before launch.</p>
+      <div class="info-list">
+        <div class="info-row"><div class="info-icon">⌖</div><div><b>Visit us</b><span>[Placeholder address, Ahmedabad, Gujarat]</span></div></div>
+        <div class="info-row"><div class="info-icon">◷</div><div><b>Opening hours</b><span>[Placeholder days and timings]</span></div></div>
+        <div class="info-row"><div class="info-icon">✆</div><div><b>Call or WhatsApp</b><span>[Placeholder phone number]</span></div></div>
+      </div>
+    </div>
+    <div class="contact-card"><h3>Say hello.</h3><p>This demo form is for preview only. It does not send messages or collect bookings.</p>
+      <form id="contactForm"><input type="text" placeholder="Your name" aria-label="Your name" required><input type="email" placeholder="Email address" aria-label="Email address" required><select aria-label="What are you looking for?"><option>I'd like to ask a question</option><option>Group visit enquiry</option><option>Feedback</option></select><textarea placeholder="Write a sample message…" aria-label="Message" required></textarea><button class="btn" type="submit">Preview message <span>→</span></button></form>
+      <p class="form-note">Demo interaction only — no message will be sent.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <a class="brand" href="#home"><span class="brand-mark">B</span><span>binileaf<small>CAFÉ • DEMO CONCEPT</small></span></a>
+      <div class="footer-links"><a href="#menu">Menu</a><a href="#story">Our Story</a><a href="#gallery">Gallery</a><a href="#visit">Contact</a></div>
+      <p>© <span id="year"></span> Binileaf Café — sample concept</p>
+    </div>
+    <div class="disclaimer">DESIGN SAMPLE ONLY. Menu items, prices, address, hours, contact details and brand copy are placeholders and are not verified Binileaf Café information.</div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const toggle=document.getElementById('menuToggle');
+const nav=document.getElementById('nav');
+toggle.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+document.querySelectorAll('.filter').forEach(button=>{
+  button.addEventListener('click',()=>{
+    document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+    button.classList.add('active');
+    const filter=button.dataset.filter;
+    document.querySelectorAll('.menu-card').forEach(card=>{
+      card.style.display=(filter==='all'||card.dataset.category===filter)?'':'none';
+    });
+  });
+});
+const toast=document.getElementById('toast');
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  toast.textContent='Demo only — this form is not connected to a real inbox.';
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),3200);
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
